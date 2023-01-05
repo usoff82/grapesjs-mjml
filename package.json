@@ -1,13 +1,15 @@
 {
   "name": "grapesjs-mjml",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "description": "MJML Componenets integration in GrapesJS",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "v:patch": "npm version patch -m \"Release v%s\"",
+    "api-server": "node server.js &",
     "build": "grapesjs-cli build --patch=false",
+    "prestart": "gulp &",
     "start": "grapesjs-cli serve"
   },
   "files": [
@@ -27,7 +29,22 @@
   "author": "Artur Arseniev",
   "license": "BSD-3-Clause",
   "dependencies": {
-    "mjml-browser": "^4.13.0"
+    "@truenorthtechnology/grapesjs-code-editor": "^0.1.4",
+    "body-parser": "^1.15.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.14.0",
+    "grapesjs-component-code-editor": "^1.0.20",
+    "grapesjs-plugin-ckeditor": "^0.0.10",
+    "gulp": "^4.0.0",
+    "gulp-debug": "^3.2.0",
+    "gulp-exec": "^5.0.0",
+    "gulp-notify": "^4.0.0",
+    "gulp-shell": "^0.8.0",
+    "handlebars": "^4.7.7",
+    "mjml-browser": "^4.13.0",
+    "through2": "^4.0.2"
   },
   "devDependencies": {
     "eslint": "^8.23.0",

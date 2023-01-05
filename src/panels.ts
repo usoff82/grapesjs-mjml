@@ -76,4 +76,68 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
       }
     ]);
   }
+
+  const panelViews = Panels.addPanel({
+    id: "views"
+  });
+  panelViews.get("buttons").add([
+    {
+      attributes: {
+        title: "Open Code"
+      },
+      className: "fa fa-file-code-o",
+      command: "open-code",
+      togglable: false, //do not close when button is clicked again
+      id: "open-code"
+    }
+  ]);
+
+
+  const pn = editor.Panels;
+  let editPanel = null
+  pn.addButton('options', {
+    id: 'editMenu',
+    attributes: { class: 'fa fa-folder', title: "File Menu" },
+    active: false,
+    command: {
+      init: function (editor) {
+        if (editPanel == null) {
+          const editMenuDiv = document.createElement('div')
+          const filename = localStorage.getItem('filename');
+          editMenuDiv.innerHTML = `
+                        <div id="your-content" style="width: auto; display: flex">
+                             <div class="gjs-fields" data-sm-fields="" >
+                                <div class="gjs-field gjs-field-text">
+                                  <span class="gjs-input-holder"><input id="export-filename" value="${filename}" style="font-size: larger"
+                                      type="text">
+                                  </span>
+                                </div>
+                             </div>
+                             <span title="Save" class="gjs-pn-btn fa fa-save" onclick="editor.SaveSourceCode(editor)"></span>
+                             <span title="Load" class="gjs-pn-btn fa fa-folder" onclick="editor.LoadProjectData(editor)"></span>
+                             <input id="load-project" type="file" accept=".json" style="display: none">
+                             <span title="Download" class="gjs-pn-btn fa fa-arrow-down" onclick="editor.DownloadSourceCode(editor)"></span>
+                              <!-- eg. bind a click event on button and do something with GrapesJS API -->
+                        </div>`;
+          const panels = pn.getPanel('options')
+          panels.set('appendContent', editMenuDiv)//.trigger('change:appendContent')
+          editPanel = editMenuDiv
+
+          const exportfilename = document.getElementById('export-filename');
+          exportfilename.addEventListener("change", () => {
+            //                console.log(exportfilename.value);
+            localStorage.setItem('filename', exportfilename.value);
+          });
+        }
+        editPanel.style.display = 'block'
+      },
+      stop: function (editor) {
+        if (editPanel != null) {
+          editPanel.style.display = 'none'
+        }
+      }
+    }
+  });
+
+
 };

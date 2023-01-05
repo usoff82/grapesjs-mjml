@@ -1,45 +1,34 @@
-// Specs: https://documentation.mjml.io/#mj-divider
+// Specs: https://documentation.mjml.io/#mjml-spacer
 import type grapesjs from 'grapesjs';
 import { componentsToQuery, getName, isComponentType } from './utils';
 import { type as typeColumn } from './Column';
 import { type as typeHero } from './Hero';
 
-export const type = 'mj-divider';
+export const type = 'mj-handlebars-helper';
 
 export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) => {
   editor.Components.addType(type, {
     isComponent: isComponentType(type),
+    extendFnView: ['onActive'],
+
     model: {
       ...coreMjmlModel,
       defaults: {
-        name: getName(editor, 'divider'),
+        name: getName(editor, 'mj-handlebars-helper'),
         draggable: componentsToQuery([typeColumn, typeHero]),
         droppable: false,
-        'style-default': {
-          'width': '100%',
-          'border-width': '4px',
-          'border-style': 'solid',
-          'border-color': '#000000',
-          'align': 'center',
-/*          'padding-top': '10px',
-          'padding-bottom': '10px',
-          'padding-right': '25px',
-          'padding-left': '25px',*/
-        },
-        stylable: [
-          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
-          'width', 'container-background-color', 'align',
-          'border-detached', 'border-width', 'border-style', 'border-color'
-        ],
-        traits: ['css-class'],
+        'style-default': { display: 'none' },
+        stylable: [],
+        traits: ['template'],
         void: false,
       },
     },
+
     view: {
       ...coreMjmlView,
       tagName: 'tr',
       attributes: {
-        style: 'display: table; width: 100%; user-select: none;',
+        style: 'pointer-events: all; display: table; width: 100%',
       },
 
       getMjmlTemplate() {
@@ -54,8 +43,24 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
       },
 
       getChildrenSelector() {
-        return 'p';
+        return 'td';
       },
+
+
+      /**
+       * Prevent content repeating
+       */
+      rerender() {
+        this.render();
+      },
+
+      /**
+       * Need to make text selectable.
+       */
+      onActive() {
+        this.getChildrenContainer().style.pointerEvents = 'all';
+      },
+
     },
   });
 };

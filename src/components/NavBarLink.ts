@@ -16,19 +16,19 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
         draggable: componentsToQuery(typeNavBar),
         highlightable: false,
         stylable: [
-          'font-style', 'font-size', 'font-weight', 'font-family', 'color',
+          'font-style', 'font-size', 'font-weight', 'font-family', 'line-height', 'letter-spacing', 'color',
           'text-decoration', 'text-transform',
           'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
         ],
         'style-default': {
           'font-size': '13px',
-          'padding-top': '25px',
+/*          'padding-top': '25px',
           'padding-bottom': '25px',
           'padding-left': '10px',
-          'padding-right': '10px',
+          'padding-right': '10px',*/
           'text-transform': 'uppercase',
         },
-        traits: ['href'],
+        traits: ['css-class', 'href'],
       },
     },
 

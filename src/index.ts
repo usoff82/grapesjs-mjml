@@ -5,6 +5,15 @@ import loadCommands from './commands';
 import loadPanels from './panels';
 import loadStyle from './style';
 import en from './locale/en';
+import main from './main';
+// @ts-ignore
+import { codeCommandFactory } from '@truenorthtechnology/grapesjs-code-editor/';//'grapesjs-component-code-editor';
+//import codeEditor from 'grapesjs-component-code-editor';
+import ckeditorPlugin from './gjs-plugin-ckeditor';
+import grapesjsDist from 'grapesjs'; 
+//import ckeditor from 'ckeditor';
+
+export {grapesjsDist, codeCommandFactory, /*ckeditor*/};
 
 export type PluginOptions = {
   /**
@@ -124,7 +133,8 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opt = {}) => {
   const opts: RequiredPluginOptions = {
     blocks: [
       'mj-1-column', 'mj-2-columns', 'mj-3-columns', 'mj-text', 'mj-button', 'mj-image', 'mj-divider', 'mj-social-group',
-      'mj-social-element', 'mj-spacer', 'mj-navbar', 'mj-navbar-link', 'mj-hero', 'mj-wrapper', 'mj-raw'
+      'mj-social-element', 'mj-spacer', 'mj-navbar', 'mj-navbar-link', 'mj-hero', 'mj-wrapper', 'mj-raw', 'mj-blurb', 'mj-section',
+      'mj-handlebars-helper', 'custom-code',
     ],
     block: () => ({}),
     codeViewerTheme: 'hopscotch',
@@ -139,7 +149,8 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opt = {}) => {
     hideSelector: true,
     useXmlParser: false,
     useCustomTheme: true,
-    columnsPadding: '10px 0',
+//    columnsPadding: '10px 0',
+    columnsPadding: '',
     i18n: {},
     fonts: {},
     // Export 'mjml', 'html' or both (leave empty) TODO
@@ -216,6 +227,10 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opt = {}) => {
     loadCommands,
     loadPanels,
     loadStyle,
+    main,
+//    ckeditor,
+    ckeditorPlugin,
+//    codeEditor,
   ].forEach(module => module(editor, opts));
 };
 

@@ -18,8 +18,8 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
         draggable: componentsToQuery([typeColumn, typeHero]),
         droppable: componentsToQuery(typeSocialElement),
         stylable: [
-          'icon-size', 'text-decoration', 'align', 'font-family', 'font-size', 'line-height',
-          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
+          'icon-size', 'icon-height', 'text-decoration', 'align', 'font-family', 'font-size', 'line-height',
+          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom', 'inner-padding', 'text-padding',
           'border-radius', 'border-top-left-radius', 'border-top-right-radius', 'border-bottom-left-radius', 'border-bottom-right-radius',
           'container-background-color',
           'color',
@@ -31,6 +31,7 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
           'line-height': '22px',
         },
         traits: [
+          'css-class',
           {
             type: 'select',
             label: 'Mode',

@@ -20,6 +20,8 @@ import loadNavBar from './NavBar';
 import loadNavBarLink from './NavBarLink';
 import loadHero from './Hero';
 import loadRaw from './Raw';
+import loadHandlebarsHelper from './HandlebarsHelper';
+import span from './span';
 import { RequiredPluginOptions } from '..';
 
 export default (editor: grapesjs.Editor, opt: RequiredPluginOptions) => {
@@ -301,6 +303,8 @@ export default (editor: grapesjs.Editor, opt: RequiredPluginOptions) => {
     loadNavBarLink,
     loadHero,
     loadRaw,
+    loadHandlebarsHelper,
+    span,
   ]
   .forEach(module => module(editor, compOpts));
 };

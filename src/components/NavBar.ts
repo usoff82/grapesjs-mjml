@@ -20,9 +20,12 @@ export default (editor: grapesjs.Editor, { opt, coreMjmlModel, coreMjmlView, san
           // TODO
         },
         stylable: [
-          // TODO
+          'align', 'ico-color', 'ico-align', 'ico-close', 'ico-open', 'ico-font-family', 'ico-font-size', 'ico-line-height',
+          'ico-text-decoration', 'ico-text-transform',
+          'ico-padding', 'ico-padding-top', 'ico-padding-right', 'ico-padding-bottom', 'ico-padding-left'
         ],
         traits: [
+          'css-class', 'base-url',
           {
             type: 'select',
             label: 'Hamburger',
@@ -31,7 +34,7 @@ export default (editor: grapesjs.Editor, { opt, coreMjmlModel, coreMjmlView, san
               { value: 'hamburger', name: 'ON' },
               { value: '', name: 'OFF' },
             ]
-          }
+          }, 
         ],
       },
     },

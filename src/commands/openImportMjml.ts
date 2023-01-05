@@ -21,10 +21,41 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions, cmdId: str
       const codeEl = codeEditor.getElement();
       const labelImport = getI18nLabel('label');
       const btnEl = document.createElement('button');
+      const fileInput = document.createElement('input');
+      fileInput.type = "file";
+      fileInput.accept = ".mjml";
+      fileInput.style.paddingLeft = '10px';
+
+      fileInput.addEventListener("change", () => {
+        const [file] = fileInput.files;
+        if (file) {
+          const reader = new FileReader();
+          reader.addEventListener("load", () => {
+            let codeEditorMjml = this.codeEditorMjml as any;
+            codeEditorMjml.setContent(reader.result);
+            codeEditorMjml.editor.refresh();
+          });
+          reader.readAsText(file);
+        }
+      })
 
       btnEl.innerHTML = getI18nLabel('button');
       btnEl.className = `${pfx}btn-prim ${pfx}btn-import`;
-      btnEl.onclick = () => this.onImport(codeEditor.editor.getValue());
+      btnEl.onclick = () => {
+        const assetManager = editor.AssetManager;
+        const el = document.createElement('html');
+        el.innerHTML = codeEditor.editor.getValue();
+        for (let img of el.getElementsByTagName('mj-image')) {
+          console.log(img.getAttribute('src'));
+          assetManager.add(img.getAttribute('src'));
+        };
+        for (let img of el.querySelectorAll('mj-section,mj-hero,mj-wrapper')) {
+          console.log(img.getAttribute('background-url'));
+          assetManager.add(img.getAttribute('background-url'));
+        };
+
+        this.onImport(codeEditor.editor.getValue());
+      };
 
       if (labelImport) {
         const labelEl = document.createElement('div');
@@ -38,6 +69,7 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions, cmdId: str
 
       el.appendChild(codeEl);
       el.appendChild(btnEl);
+      el.appendChild(fileInput);
 
       return { codeEditor, el };
     },

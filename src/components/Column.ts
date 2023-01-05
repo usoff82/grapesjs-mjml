@@ -16,13 +16,18 @@ export default (editor: grapesjs.Editor, { opt, coreMjmlModel, coreMjmlView, san
         name: getName(editor, 'column'),
         draggable: componentsToQuery(typeSection),
         stylable: [
-          'background-color', 'vertical-align', 'width',
+          'width', 'height',
+          'background-color', 'inner-background-color', 'vertical-align', //'width',
+          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
           'border-radius', 'border-top-left-radius', 'border-top-right-radius', 'border-bottom-left-radius', 'border-bottom-right-radius',
+//          'inner-border-bottom', 'inner-border-left', 'inner-border-right', 'inner-border-top', 'inner-border-radius',
           'border', 'border-width', 'border-style', 'border-color',
         ],
         'style-default': {
-          'vertical-align': 'top'
-        }
+          'vertical-align': 'top',
+    //      'padding': '20px 0',
+        },
+        traits: ['css-class']
       },
     },
 

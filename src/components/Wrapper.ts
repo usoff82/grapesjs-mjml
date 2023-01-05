@@ -16,9 +16,23 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
         name: getName(editor, 'wrapper'),
         draggable: componentsToQuery(typeBody),
         droppable: componentsToQuery(typeSection),
+        stylable: [
+          'text-align',
+          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
+          'background-color', 'background-url', 'background-repeat', 'background-size', 'background-position', 'background-position-x', 'background-position-y',
+          'border-radius', 'border-top-left-radius', 'border-top-right-radius', 'border-bottom-left-radius', 'border-bottom-right-radius',
+          'border', 'border-width', 'border-style', 'border-color'
+        ],
+        'style-default': {
+/*          'padding-left': '0px',
+          'padding-right': '0px',
+          'padding-top': '10px',
+          'padding-bottom': '10px',*/
+          'text-align': 'center',
+        },
         traits:[
-          'id',
-          'title',
+//          'id',
+          'css-class',
           {
             type: 'checkbox',
             label: 'Full width',

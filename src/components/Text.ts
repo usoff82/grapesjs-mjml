@@ -24,7 +24,7 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
           'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
           'container-background-color'
         ],
-        'style-default': {
+ /*       'style-default': {
           'padding-top': '10px',
           'padding-bottom': '10px',
           'padding-right': '25px',
@@ -32,7 +32,8 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
           'font-size': '13px',
           'line-height': '22px',
           'align': 'left',
-        },
+        },*/
+        traits: ['css-class', 'style']
       },
     },
 

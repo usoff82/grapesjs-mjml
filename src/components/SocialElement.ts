@@ -15,8 +15,8 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
         name: getName(editor, 'socialElement'),
         draggable: componentsToQuery(typeSocial),
         stylable: [
-          'icon-size', 'text-decoration', 'align', 'font-family', 'font-size', 'line-height',
-          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom',
+          'icon-size', 'icon-height', 'text-decoration', 'align', 'font-family', 'font-size', 'line-height',
+          'padding', 'padding-top', 'padding-left', 'padding-right', 'padding-bottom', 'text-padding', 'icon-padding', 
           'border-radius', 'border-top-left-radius', 'border-top-right-radius', 'border-bottom-left-radius', 'border-bottom-right-radius',
           'background-color',
           'color',
@@ -29,6 +29,7 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
           'vertical-align': 'middle',
         },
         traits: [
+          'css-class',
           {
             type: 'select',
             label: 'Icon',
@@ -55,6 +56,10 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
           },
           { name: 'src' },
           { name: 'href' },
+          { name: 'target' },
+          { name: 'alt' },
+          { name: 'rel' },
+          { name: 'title' },
         ],
       },
     },

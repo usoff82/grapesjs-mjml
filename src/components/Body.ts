@@ -22,6 +22,7 @@ export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) =
         highlightable: false,
         'style-default': { 'width': '600px' },
         stylable: [ 'width', 'background-color' ],
+        traits: ['css-class'],
       },
     },
 
