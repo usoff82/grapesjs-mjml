@@ -1,14 +1,13 @@
-// @ts-nocheck TODO remove this comment with the next grapesjs release
-import type grapesjs from 'grapesjs';
+import type { Editor } from 'grapesjs';
 import { RequiredPluginOptions } from '.';
 import {
   cmdDeviceDesktop,
-  cmdDeviceTablet,
   cmdDeviceMobile,
+  cmdDeviceTablet,
   cmdImportMjml,
 } from './commands';
 
-export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
+export default (editor: Editor, opts: RequiredPluginOptions) => {
   const { Panels } = editor;
   const iconStyle = 'style="display: block; max-width:22px"';
 
@@ -48,9 +47,9 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
     // Turn off default devices select and create new one
     editor.getConfig().showDevices = false;
 
-    const devicePanel = Panels.addPanel({ id: 'devices-c' });
+    const devicePanel = Panels.addPanel({ id: 'devices-c' } as any);
     const deviceBtns = devicePanel.get('buttons');
-    deviceBtns.add([
+    deviceBtns!.add([
       {
         id: cmdDeviceDesktop,
         command: cmdDeviceDesktop,
@@ -80,7 +79,7 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
   const panelViews = Panels.addPanel({
     id: "views"
   });
-  panelViews.get("buttons").add([
+  panelViews.get("buttons")!.add([
     {
       attributes: {
         title: "Open Code"
@@ -94,15 +93,15 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
 
 
   const pn = editor.Panels;
-  let editPanel = null
+  let editPanel = null as HTMLDivElement | null;
   pn.addButton('options', {
     id: 'editMenu',
     attributes: { class: 'fa fa-folder', title: "File Menu" },
     active: false,
     command: {
-      init: function (editor) {
+      init: function () {
         if (editPanel == null) {
-          const editMenuDiv = document.createElement('div')
+          const editMenuDiv = document.createElement('div');
           const filename = localStorage.getItem('filename');
           editMenuDiv.innerHTML = `
                         <div id="your-content" style="width: auto; display: flex">
@@ -119,19 +118,19 @@ export default (editor: grapesjs.Editor, opts: RequiredPluginOptions) => {
                              <span title="Download" class="gjs-pn-btn fa fa-arrow-down" onclick="editor.DownloadSourceCode(editor)"></span>
                               <!-- eg. bind a click event on button and do something with GrapesJS API -->
                         </div>`;
-          const panels = pn.getPanel('options')
-          panels.set('appendContent', editMenuDiv)//.trigger('change:appendContent')
+          const panels = pn.getPanel('options');
+          panels!.set('appendContent', editMenuDiv)//.trigger('change:appendContent')
           editPanel = editMenuDiv
 
           const exportfilename = document.getElementById('export-filename');
-          exportfilename.addEventListener("change", () => {
+          exportfilename!.addEventListener("change", () => {
             //                console.log(exportfilename.value);
-            localStorage.setItem('filename', exportfilename.value);
+            localStorage.setItem('filename', exportfilename!.innerText);
           });
         }
         editPanel.style.display = 'block'
       },
-      stop: function (editor) {
+      stop: function () {
         if (editPanel != null) {
           editPanel.style.display = 'none'
         }

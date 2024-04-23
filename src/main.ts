@@ -1,6 +1,6 @@
-import grapesjs from 'grapesjs';
+//import grapesjs from 'grapesjs';
+import type { Editor } from 'grapesjs';
 // @ts-ignore
-import CKEDITOR from 'ckeditor';
 import { RequiredPluginOptions } from '.';
 
 //import 'grapesjs/dist/css/grapes.min.css'
@@ -8,9 +8,9 @@ import { RequiredPluginOptions } from '.';
 
 
 
-export default (editor: grapesjs.Editor, { coreMjmlModel, coreMjmlView }: any) => {
+export default (editor: Editor, { coreMjmlModel, coreMjmlView }: any) => {
   // @ts-ignore
-  editor.DownloadSourceCode = (editor: grapesjs.Editor) => {
+  editor.DownloadSourceCode = (editor: Editor) => {
     // @ts-ignore
     const filename = document.getElementById('export-filename').value + '.project.json';
     // @ts-ignore

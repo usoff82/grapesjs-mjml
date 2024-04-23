@@ -3,10 +3,19 @@
 
 <head>
   <meta charset="utf-8">
-  <title>GrapesJS Plugin</title>
-  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
-  <script src="https://cdn.ckeditor.com/4.16.1/full-all/ckeditor.js"></script>
+  <title>GrapesJS MJML Plugin</title>
+  <!--<link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">-->
+  <!--<script src="https://cdn.ckeditor.com/4.16.1/full-all/ckeditor.js"></script>-->
+  <!--<script src="https://cdn.ckeditor.com/4.21.0/full-all/ckeditor.js"></script>-->
+  <!--<script src="https://unpkg.com/grapesjs-plugin-ckeditor"></script>-->
+  <!--<script src="https://unpkg.com/grapesjs"></script>-->
+  <!--<script type="text/javascript" src="./_ckeditor/ckeditor.js"></script>-->
 
+
+  <link href="./grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+  <script type="text/javascript" src="./grapesjs/dist/grapes.min.js"></script>
+  <script type="text/javascript" src="./grapesjs-plugin-ckeditor/dist/index.js"></script>
+  <script type="text/javascript" src="./index.js"></script>
   <style>
     body,
     html {
@@ -56,25 +65,25 @@
   <div id="gjs" style="height:0px; overflow:hidden">
     <mjml>
       <mj-head>
-        <mj-font name="Barlow" href="https://fonts.googleapis.com/css?family=Barlow">
-          <mj-style>
-            .slogan {
-            background: #000;
-            }
-          </mj-style>
+        <mj-font name="Barlow" href="https://fonts.googleapis.com/css?family=Barlow"></mj-font>
+
+        <mj-style>
+          .slogan {
+          background: #000;
+          }
+        </mj-style>
         </mj-font>
       </mj-head>
       <mj-body>
         <!-- Company Header -->
         <mj-section background-color="#f0f0f0">
-          <mj-column>
-            <mj-text font-family="Barlow">A first line of text
-            </mj-text>
+          <mj-column border="10px solid #F45E43">
+            <mj-text font-family="Barlow">A first line of text</mj-text>
+            <mj-spacer height="50px" />
           </mj-column>
         </mj-section>
         <!-- Image Header -->
-        <mj-section
-          background-size="cover" background-repeat="no-repeat">
+        <mj-section background-size="cover" background-repeat="no-repeat">
           <mj-column>
             <mj-text css-class="slogan" color="#fff" font-size="40px" font-family="Helvetica Neue">Slogan
               here
@@ -84,6 +93,90 @@
             </mj-button>
           </mj-column>
         </mj-section>
+
+        <!-- Intro text -->
+        <mj-wrapper background-color="#ffe9f7" padding="10px">
+          <mj-section background-color="#eaeffa">
+            <mj-group background-color="#fffadd">
+              <mj-column>
+                <mj-text font-style="italic" font-size="20px" font-family="Helvetica Neue" color="#626262">My Awesome
+                  Text</mj-text>
+                <mj-text color="#525252">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu
+                  semper augue semper.
+                  Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus, sit amet suscipit nibh.
+                  Proin nec
+                  commodo purus. Sed eget nulla elit. Nulla aliquet mollis faucibus.
+                </mj-text>
+                <mj-button background-color="#F45E43" href="#">Learn more</mj-button>
+              </mj-column>
+            </mj-group>
+          </mj-section>
+        </mj-wrapper>
+
+        <!-- Side image -->
+        <mj-section background-color="white">
+          <mj-column>
+            <mj-image width="200px" src="https://designspell.files.wordpress.com/2012/01/sciolino-paris-bw.jpg" />
+          </mj-column>
+          <mj-column>
+            <mj-text font-style="italic" font-size="20px" font-family="Helvetica Neue" color="#626262">
+              Find amazing places ...
+            </mj-text>
+            <mj-text color="#525252">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu semper
+              augue semper.
+              Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus.</mj-text>
+          </mj-column>
+        </mj-section>
+        <mj-section>
+          <mj-column>
+            <mj-text font-style="italic" font-size="20px" font-family="Helvetica Neue" color="#626262" align="center">
+              ... with real-life images
+            </mj-text>
+          </mj-column>
+        </mj-section>
+        <mj-raw>
+          <div class="container">
+            <img class="item" src="https://source.unsplash.com/random/200x141?random" alt="Example image">
+            <img class="item" src="https://source.unsplash.com/random/200x142?random" alt="Example image">
+            <img class="item" src="https://source.unsplash.com/random/200x143?random" alt="Example image">
+            <img class="item" src="https://source.unsplash.com/random/200x144?random" alt="Example image">
+            <img class="item" src="https://source.unsplash.com/random/200x145?random" alt="Example image">
+            <img class="item" src="https://source.unsplash.com/random/200x146?random" alt="Example image">
+          </div>
+        </mj-raw>
+        <!-- Icons -->
+        <mj-section background-color="#fbfbfb">
+          <mj-column>
+            <mj-image width="100px" src="http://191n.mj.am/img/191n/3s/x0l.png" />
+          </mj-column>
+          <mj-column>
+            <mj-image width="100px" src="http://191n.mj.am/img/191n/3s/x01.png" />
+          </mj-column>
+          <mj-column>
+            <mj-image width="100px" src="http://191n.mj.am/img/191n/3s/x0s.png" />
+          </mj-column>
+        </mj-section>
+
+        <!-- Footer -->
+        <mj-section background-color="#e7e7e7">
+          <mj-column>
+            <mj-button href="#">Hello There!</mj-button>
+            <mj-social font-size="15px" icon-size="30px" mode="horizontal">
+              <mj-social-element name="facebook" href="https://mjml.io/">
+                Facebook
+              </mj-social-element>
+              <mj-social-element name="google" href="https://mjml.io/">
+                Google
+              </mj-social-element>
+              <mj-social-element name="twitter" href="https://mjml.io/">
+                Twitter
+              </mj-social-element>
+            </mj-social>
+          </mj-column>
+        </mj-section>
+        <!-- Footer -->
       </mj-body>
     </mjml>
   </div>
@@ -91,7 +184,7 @@
   <script type="text/javascript">
     // Wait for the plugin to be injected by the dev server
     document.addEventListener('DOMContentLoaded', function () {
-      window.editor = window['grapesjs-mjml'].grapesjsDist.init({
+      window.editor = window['grapesjs'].init({
         height: '100%',
         noticeOnUnload: 0,
         clearOnRender: true,
@@ -110,9 +203,42 @@
         },
         //panels: window['@truenorthtechnology/grapesjs-code-editor'].panels,
         fromElement: true,
-        plugins: ['grapesjs-mjml',],
+        plugins: ['grapesjs-mjml', 'grapesjs-plugin-ckeditor'],
         pluginsOpts: {
           'grapesjs-mjml': {},
+          'grapesjs-plugin-ckeditor': {
+            onToolbar: el => {
+              el.style.minWidth = '350px';
+            },
+            ckeditor: "./ckeditor_dev/ckeditor.js",
+            options: {
+              language: 'en',
+              language_list: ['en:English', 'ru:Russian'],
+              //startupFocus: true,
+              extraAllowedContent: '*(*);*{*}', // Allows any class and any inline style
+              allowedContent: true, // Disable auto-formatting, class removing, etc.
+              enterMode: 2, // CKEDITOR.ENTER_BR,
+              extraPlugins: 'justify,colorbutton,font,sourcedialog,tabletools',
+              removePlugins: 'exportpdf',
+              toolbar: [
+                { name: 'clipboard', items: ['SelectAll', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                { name: 'editing', items: ['Find', 'Replace'] },
+                { name: 'tools', items: ['UIColor', 'Maximize', 'ShowBlocks'] },
+                { name: 'document', items: ['Source', 'Sourcedialog'] },
+                { name: 'about', items: ['About'] },
+                '/',
+                { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                '/',
+                { name: 'colors', items: ['TextColor', 'BGColor'] },
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat'] },
+                '/',
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
+                { name: 'links', items: ['Link', 'Unlink'] },
+                { name: 'insert', items: ['Table', 'HorizontalRule', 'SpecialChar', 'PageBreak'] },
+              ],
+              removeButtons: 'NewPage,Flash,Iframe,PageBreak,Image,Smiley,CreateDiv,Anchor'
+            }
+          }
         }
       });
       //      editor.getConfig().showDevices = 0; editor.Panels.getPanels().forEach(item => console.log(item.get('id')));

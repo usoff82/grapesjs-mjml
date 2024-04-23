@@ -1,4 +1,4 @@
-import type grapesjs from 'grapesjs';
+import type { Plugin } from 'grapesjs';
 import loadBlocks from './blocks';
 import loadComponents from './components';
 import loadCommands from './commands';
@@ -9,11 +9,11 @@ import main from './main';
 // @ts-ignore
 import { codeCommandFactory } from '@truenorthtechnology/grapesjs-code-editor/';//'grapesjs-component-code-editor';
 //import codeEditor from 'grapesjs-component-code-editor';
-import ckeditorPlugin from './gjs-plugin-ckeditor';
-import grapesjsDist from 'grapesjs'; 
-//import ckeditor from 'ckeditor';
+//import ckeditorPlugin from './gjs-plugin-ckeditor';
+//import ckeditorPlugin from 'grapesjs-plugin-ckeditor';
+//import grapesjsDist from 'grapesjs'; 
 
-export {grapesjsDist, codeCommandFactory, /*ckeditor*/};
+export { codeCommandFactory, };
 
 export type PluginOptions = {
   /**
@@ -129,7 +129,7 @@ export type PluginOptions = {
 
 export type RequiredPluginOptions = Required<PluginOptions>;
 
-const plugin: grapesjs.Plugin<PluginOptions> = (editor, opt = {}) => {
+const plugin: Plugin<PluginOptions> = (editor, opt = {}) => {
   const opts: RequiredPluginOptions = {
     blocks: [
       'mj-1-column', 'mj-2-columns', 'mj-3-columns', 'mj-text', 'mj-button', 'mj-image', 'mj-divider', 'mj-social-group',
@@ -182,7 +182,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opt = {}) => {
 
   // Use XML Parser
   if (opts.useXmlParser) {
-    editor.Parser.getConfig().optionsHtml.htmlType = 'text/xml';
+    editor.Parser.getConfig().optionsHtml!.htmlType = 'text/xml';
   }
 
   if (opts.useCustomTheme && typeof window !== 'undefined') {
@@ -228,8 +228,7 @@ const plugin: grapesjs.Plugin<PluginOptions> = (editor, opt = {}) => {
     loadPanels,
     loadStyle,
     main,
-//    ckeditor,
-    ckeditorPlugin,
+//    ckeditorPlugin,
 //    codeEditor,
   ].forEach(module => module(editor, opts));
 };
